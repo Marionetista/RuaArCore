@@ -1,7 +1,7 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:rua_arcore/demo_page.dart';
 import 'package:rua_arcore/resources/rua_colors.dart';
+import 'package:rua_arcore/widgets/bottom_navigation_bar_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,7 +22,9 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text(
             'RuA 404',
-            style: TextStyle(fontFamily: 'Bungee'),
+            style: TextStyle(
+              fontFamily: 'Bungee',
+            ),
           ),
           backgroundColor: RuaColors.amethyst,
           actions: [
@@ -34,40 +36,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         body: SingleChildScrollView(
-          child: GridView.count(
-            primary: false,
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(10.0),
-            crossAxisCount: 2,
-            childAspectRatio: 0.90,
-            // mainAxisSpacing: 20,
-            // crossAxisSpacing: 30,
-            children: <Widget>[
-              Tooltip(
-                message: 'STICKERS',
-                child: Container(
-                  color: RuaColors.capri,
-                  child: Image.network('https://i.imgur.com/shzIn64.gif'),
-                ),
-              ),
-              Tooltip(
-                message: 'ROUPAS',
-                child: Container(
-                  color: RuaColors.seaGreenCrayola,
-                  child: Image.network('https://i.imgur.com/EF7nkE6.gif'),
-                ),
-              ),
-              Tooltip(
-                message: 'DOSKAOPD',
-                child: Container(
-                  width: 10,
-                  height: 30,
-                  color: Colors.orange,
-                  child: Image.network('https://i.imgur.com/c2XnR0w.gif'),
-                ),
-              ),
-            ],
-          ),
+          child: _bottomNavIndex == 0 ? mainContent() : storeContent(),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
@@ -80,20 +49,47 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        bottomNavigationBar: AnimatedBottomNavigationBar(
-          backgroundColor: RuaColors.magentaCrayola,
-          inactiveColor: Colors.white,
-          activeColor: RuaColors.seaGreenCrayola,
-          activeIndex: _bottomNavIndex,
+        bottomNavigationBar: BottomNavigationBarWidget(
           icons: iconList,
-          gapLocation: GapLocation.center,
-          notchSmoothness: NotchSmoothness.verySmoothEdge,
-          leftCornerRadius: 32,
-          rightCornerRadius: 32,
+          activeIndex: _bottomNavIndex,
           onTap: (index) => setState(() => _bottomNavIndex = index),
-          splashColor: Colors.black,
-          splashRadius: 20,
-          height: 45,
         ),
       );
+
+  Widget mainContent() => GridView.count(
+        primary: false,
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(10.0),
+        crossAxisCount: 2,
+        childAspectRatio: 0.90,
+        // mainAxisSpacing: 20,
+        // crossAxisSpacing: 30,
+        children: <Widget>[
+          Tooltip(
+            message: 'STICKERS',
+            child: Container(
+              color: RuaColors.capri,
+              child: Image.network('https://i.imgur.com/shzIn64.gif'),
+            ),
+          ),
+          Tooltip(
+            message: 'ROUPAS',
+            child: Container(
+              color: RuaColors.seaGreenCrayola,
+              child: Image.network('https://i.imgur.com/EF7nkE6.gif'),
+            ),
+          ),
+          Tooltip(
+            message: 'DOSKAOPD',
+            child: Container(
+              width: 10,
+              height: 30,
+              color: Colors.orange,
+              child: Image.network('https://i.imgur.com/c2XnR0w.gif'),
+            ),
+          ),
+        ],
+      );
+
+  Widget storeContent() => const SizedBox();
 }

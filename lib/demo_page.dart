@@ -32,7 +32,12 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text('RuA 404 RA'),
+          title: Text(
+            'RuA 404 RA',
+            style: TextStyle(
+              fontFamily: 'Bungee',
+            ),
+          ),
           backgroundColor: appBarColors[index],
         ),
         body: ArCoreView(
