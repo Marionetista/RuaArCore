@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:rua_arcore/demo_page.dart';
 import 'package:rua_arcore/resources/rua_colors.dart';
-import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,10 +9,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ArCoreController arCoreController;
-
-  Random random = new Random();
-
   var _bottomNavIndex = 0;
 
   final iconList = <IconData>[
@@ -27,6 +20,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: RuaColors.minionYellow,
         appBar: AppBar(
+          title: Text(
+            'RuA 404',
+            style: TextStyle(fontFamily: 'Bungee'),
+          ),
+          backgroundColor: RuaColors.amethyst,
           actions: [
             IconButton(
               icon: const Icon(Icons.more_vert),
@@ -34,18 +32,16 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {},
             ),
           ],
-          title: Text('RuA'),
-          backgroundColor: RuaColors.amethyst,
         ),
         body: SingleChildScrollView(
           child: GridView.count(
             primary: false,
             shrinkWrap: true,
-            padding: const EdgeInsets.all(1.5),
+            padding: const EdgeInsets.all(10.0),
             crossAxisCount: 2,
-            childAspectRatio: 0.80,
-            mainAxisSpacing: 1.0,
-            crossAxisSpacing: 1.0,
+            childAspectRatio: 0.90,
+            // mainAxisSpacing: 20,
+            // crossAxisSpacing: 30,
             children: <Widget>[
               Tooltip(
                 message: 'STICKERS',
@@ -55,10 +51,19 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Tooltip(
-                message: 'GRAFFITI',
+                message: 'ROUPAS',
                 child: Container(
                   color: RuaColors.seaGreenCrayola,
                   child: Image.network('https://i.imgur.com/EF7nkE6.gif'),
+                ),
+              ),
+              Tooltip(
+                message: 'DOSKAOPD',
+                child: Container(
+                  width: 10,
+                  height: 30,
+                  color: Colors.orange,
+                  child: Image.network('https://i.imgur.com/c2XnR0w.gif'),
                 ),
               ),
             ],
