@@ -56,40 +56,44 @@ class _HomePageState extends State<HomePage> {
         ),
       );
 
-  Widget mainContent() => GridView.count(
-        primary: false,
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(10.0),
-        crossAxisCount: 2,
-        childAspectRatio: 0.90,
-        // mainAxisSpacing: 20,
-        // crossAxisSpacing: 30,
-        children: <Widget>[
-          Tooltip(
-            message: 'STICKERS',
-            child: Container(
-              color: RuaColors.capri,
-              child: Image.network('https://i.imgur.com/shzIn64.gif'),
-            ),
+  Widget mainContent() => Column(
+    children: [
+      GridView.count(
+            primary: false,
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(10.0),
+            crossAxisCount: 2,
+            childAspectRatio: 0.90,
+            // mainAxisSpacing: 20,
+            // crossAxisSpacing: 30,
+            children: <Widget>[
+              Tooltip(
+                message: 'STICKERS',
+                child: Container(
+                  color: RuaColors.capri,
+                  child: Image.network('https://i.imgur.com/shzIn64.gif'),
+                ),
+              ),
+              Tooltip(
+                message: 'ROUPAS',
+                child: Container(
+                  color: RuaColors.seaGreenCrayola,
+                  child: Image.network('https://i.imgur.com/EF7nkE6.gif'),
+                ),
+              ),
+              Tooltip(
+                message: 'DOSKAOPD',
+                child: Container(
+                  width: 10,
+                  height: 30,
+                  color: Colors.orange,
+                  child: Image.network('https://i.imgur.com/c2XnR0w.gif'),
+                ),
+              ),
+            ],
           ),
-          Tooltip(
-            message: 'ROUPAS',
-            child: Container(
-              color: RuaColors.seaGreenCrayola,
-              child: Image.network('https://i.imgur.com/EF7nkE6.gif'),
-            ),
-          ),
-          Tooltip(
-            message: 'DOSKAOPD',
-            child: Container(
-              width: 10,
-              height: 30,
-              color: Colors.orange,
-              child: Image.network('https://i.imgur.com/c2XnR0w.gif'),
-            ),
-          ),
-        ],
-      );
+    ],
+  );
 
   Widget storeContent() => const SizedBox();
 }
